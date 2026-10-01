@@ -2,7 +2,7 @@
 #Key pair
 resource "aws_key_pair" "my-key" {
 
-  key_name = "terra-ec2-key"
+  key_name = "terra-ec2-key${var.env}"
   public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyaJzCyemxXR09we/DraFcRMsCIV4Crc4eKfuPw9dcAtRKutXE/CO2EW377cDq7Q5x7yFyil2iGgCq0tYNk2pB794nEyQ9SNAgqwxD/lza6t8HEm7kIEkbDuY212AtT/dkEUUYDkkM5T/TvbUW1BcwoSAMDbdkAUTKJj9TSVtB6qkPRoK+jgoeLkx0x+BT8gvvGUYy38x29px4eClPu7dP/AwGL2TtdX/Gu5AY4WS9DDdd+SKDd6oI6Qa69rR9icH5M6yuYIRNJ1jmr80XrCyh87qvfupZ0g273Kv7ml+VZAjTrZtZIWpYgpIktc7xwh4tAUrF9fNL2Ki/XNFpsPtZ docker-new-key"
   tags = {
     Environment = var.env 
@@ -16,7 +16,7 @@ resource "aws_default_vpc" "default" {
 
 # Security Group
 resource "aws_security_group" "my-sec-g" {
-  name = "automate-sg"
+  name = "${var.env}automate-sg"
   description = "This will add a TF generated Security group"
   vpc_id = aws_default_vpc.default.id     #Interpolation 
 
