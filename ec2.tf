@@ -21,7 +21,7 @@ resource "aws_security_group" "my-sec-g" {
   vpc_id = aws_default_vpc.default.id     #Interpolation 
 
   tags = {
-    name = "automate-sg"
+    name = "${var.env}automate-sg"
     Environment = var.env
   }
 
@@ -80,7 +80,7 @@ resource "aws_instance" "my-instance" {
 
    tags = {
 
-    Name = "TWS-EC2-Automateami-0b6d9d3d33ba97d99"
+    Name = "TWS-EC2-${var.env}"
     Environment = var.env
 
 
