@@ -62,8 +62,7 @@ resource "aws_instance" "my-instance" {
    #count = 1 # Dynamic Metadata Argument
    for_each = tomap({
      TWS-micro = "t3.micro"
-     TWS-medium = "t3.micro"
-     TWS-small = "t3.micro"
+     
 
 
    })
