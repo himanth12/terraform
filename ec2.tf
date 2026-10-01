@@ -16,7 +16,7 @@ resource "aws_default_vpc" "default" {
 
 # Security Group
 resource "aws_security_group" "my-sec-g" {
-  name = "automate-sg"
+  name = "${var.env}automate-sg"
   description = "This will add a TF generated Security group"
   vpc_id = aws_default_vpc.default.id     #Interpolation 
 
@@ -79,7 +79,7 @@ resource "aws_instance" "my-instance" {
 
    tags = {
 
-    Name = "TWS-EC2-Automateami-0b6d9d3d33ba97d99"
+    Name = "TWS-EC2-${var.env}"
     Environment = var.env
 
 
